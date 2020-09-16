@@ -13,7 +13,7 @@ public class AppleTreeController : MonoBehaviour
 
     void Start()
     {
-
+        Invoke("DropApple", spawnTime);
     }
 
     void Update()
@@ -30,5 +30,20 @@ public class AppleTreeController : MonoBehaviour
         {
             speed = -Mathf.Abs(speed);
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (Random.value < chance)
+        {
+            speed *= -1;
+        }
+    }
+
+    void DropApple()
+    {
+        GameObject app = Instantiate<GameObject>(apple);
+        app.transform.position = transform.position;
+        Invoke("DropApple", spawnTime);
     }
 }
