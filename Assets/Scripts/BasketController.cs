@@ -25,17 +25,19 @@ public class BasketController : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {        
+        int var = int.Parse(score.ToString());
+
         if (coll.gameObject.tag == ("Apple"))
         {
             Destroy(coll.gameObject);
 
-
             int points = int.Parse(score.text);
             points += 100;
             score.text = points.ToString();
-            if (points > HSController.score)
+
+            if(var > HSController.score)
             {
-                HSController.score = points;
+                HSController.score = var;
             }
         }
     }
